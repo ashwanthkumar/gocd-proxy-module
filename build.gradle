@@ -1,3 +1,11 @@
+plugins {
+    id 'io.codearte.nexus-staging' version '0.11.0'
+    id 'com.bmuschko.nexus' version '2.3.1'
+}
+
+apply plugin: 'maven'
+apply plugin: 'signing'
+
 allprojects {
     apply plugin: 'java'
 
@@ -7,3 +15,49 @@ allprojects {
     }
 }
 
+task printProps {
+    doLast {
+        println commandLineProjectProp
+        println gradlePropertiesProp
+        println systemProjectProp
+        println envProjectProp
+        println System.properties['system']
+    }
+}
+
+
+modifyPom {
+    allprojects {
+        group "in.ashwanthkumar"
+        url 'https://github.com/ashwanthkumar/gocd-proxy-module'
+        inceptionYear '2018'
+
+        scm {
+            url 'https://github.com/ashwanthkumar/gocd-proxy-module'
+            connection 'scm:https://ashwanthkumar@github.com/ashwanthkumar/gocd-proxy-module.git'
+            developerConnection 'scm:git://github.com/ashwanthkumar/gocd-proxy-module.git'
+        }
+
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id 'ashwanthkumar'
+                name 'Ashwanth Kumar'
+                email 'ashwanthkumar@googlemail.com'
+            }
+        }
+    }
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'http://localhost:8081/nexus/content/repositories/internal/'
+    snapshotRepositoryUrl = 'http://localhost:8081/nexus/content/repositories/internal-snapshots/'
+}
