@@ -1,0 +1,5 @@
+description = '(Proxy) GoCD Database Interface'
+
+dependencies {
+    compile project(':base')
+}
