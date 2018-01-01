@@ -5,10 +5,12 @@ plugins {
 
 apply plugin: 'io.codearte.nexus-staging'
 
-subprojects {
+allprojects {
     group 'in.ashwanthkumar'
-    version '17.12.0-SNAPSHOT'
+    version '17.12.0'
+}
 
+subprojects {
     apply plugin: 'java'
     apply plugin: 'com.bmuschko.nexus'
 

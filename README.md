@@ -16,6 +16,8 @@ To publish the updated version of the build to sonatype
 
 ```bash
 ./gradlew uploadArchives
+# If you're doing a release not a SNAPSHOT you might also want to run
+./gradlew closeAndReleaseRepository
 ```
 
 If you would like to publish a specific module, 
