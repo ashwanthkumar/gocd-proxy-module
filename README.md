@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ashwanthkumar/gocd-proxy-module.svg?branch=master)](https://travis-ci.org/ashwanthkumar/gocd-proxy-module)
 # gocd-proxy-module
 
 Contains specific gocd-modules that are needed for some addons, extensions or other purposes but they're not yet published on Maven Central to be consumed from outside. 
