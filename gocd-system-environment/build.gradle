@@ -1,0 +1,9 @@
+description = '(Proxy) GoCD System Environment'
+
+dependencies {
+    compile project(':base')
+
+    compileOnly 'org.slf4j:slf4j-api:1.7.25'
+    compileOnly 'commons-lang:commons-lang:2.6'
+    compileOnly 'ch.qos.logback:logback-classic:1.2.3'
+}
