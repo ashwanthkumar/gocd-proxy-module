@@ -1,5 +1,5 @@
 rootProject.name = 'gocd-proxy-module'
 
-include ':base'
-include ':gocd-database'
-include ':gocd-system-environment'
+include ':gocd-proxy-module-base'
+include ':gocd-proxy-module-database'
+include ':gocd-proxy-module-system-environment'

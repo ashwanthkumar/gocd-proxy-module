@@ -1,56 +1,47 @@
 plugins {
-    id 'io.codearte.nexus-staging' version '0.11.0'
     id 'com.bmuschko.nexus' version '2.3.1'
+    id 'io.codearte.nexus-staging' version '0.11.0'
 }
 
-apply plugin: 'maven'
-apply plugin: 'signing'
+apply plugin: 'io.codearte.nexus-staging'
 
-allprojects {
+subprojects {
+    group 'in.ashwanthkumar'
+    version '17.12.0-SNAPSHOT'
+
     apply plugin: 'java'
+    apply plugin: 'com.bmuschko.nexus'
 
     repositories {
         mavenLocal()
         mavenCentral()
     }
-}
 
-task printProps {
-    doLast {
-        println commandLineProjectProp
-        println gradlePropertiesProp
-        println systemProjectProp
-        println envProjectProp
-        println System.properties['system']
-    }
-}
-
-
-modifyPom {
-    allprojects {
-        group "in.ashwanthkumar"
-        url 'https://github.com/ashwanthkumar/gocd-proxy-module'
-        inceptionYear '2018'
-
-        scm {
+    modifyPom {
+        project {
             url 'https://github.com/ashwanthkumar/gocd-proxy-module'
-            connection 'scm:https://ashwanthkumar@github.com/ashwanthkumar/gocd-proxy-module.git'
-            developerConnection 'scm:git://github.com/ashwanthkumar/gocd-proxy-module.git'
-        }
+            inceptionYear '2018'
 
-        licenses {
-            license {
-                name 'The Apache Software License, Version 2.0'
-                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                distribution 'repo'
+            scm {
+                url 'https://github.com/ashwanthkumar/gocd-proxy-module'
+                connection 'scm:https://ashwanthkumar@github.com/ashwanthkumar/gocd-proxy-module.git'
+                developerConnection 'scm:git://github.com/ashwanthkumar/gocd-proxy-module.git'
             }
-        }
 
-        developers {
-            developer {
-                id 'ashwanthkumar'
-                name 'Ashwanth Kumar'
-                email 'ashwanthkumar@googlemail.com'
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'ashwanthkumar'
+                    name 'Ashwanth Kumar'
+                    email 'ashwanthkumar@googlemail.com'
+                }
             }
         }
     }
@@ -58,6 +49,4 @@ modifyPom {
 
 nexus {
     sign = true
-    repositoryUrl = 'http://localhost:8081/nexus/content/repositories/internal/'
-    snapshotRepositoryUrl = 'http://localhost:8081/nexus/content/repositories/internal-snapshots/'
 }
