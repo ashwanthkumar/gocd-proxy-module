@@ -5,6 +5,14 @@ Contains specific gocd-modules that are needed for some addons, extensions or ot
 
 All these modules are meant for compiling your code only and not meant to be packaged along. Always use "provided" scope when using these modules.
 
+## Development
+
+To publish the updated version of the build to sonatype
+
+```bash
+./gradlew uploadArchives
+```
+
 ## LICENSE
 https://www.apache.org/licenses/LICENSE-2.0
 
